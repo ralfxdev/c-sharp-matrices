@@ -1,5 +1,10 @@
 ﻿//inicio del programa principal
-string[] palabras = { "GATO", "PERRO", "CASA", "ARBOL" };
+string[] palabras = {
+  "GATO",
+  "PERRO",
+  "CASA",
+  "ARBOL"
+};
 char[,] tablero = GenerarTablero(palabras);
 
 Console.WriteLine("¡Bienvenido al juego de búsqueda de palabras!");
@@ -24,9 +29,6 @@ foreach (string palabra in palabras)
 
 Console.WriteLine("¡Felicidades! Has completado el juego.");
 Console.ReadLine();
-
-
-
 
 // funciones utilizadas en el programa principal
 static char[,] GenerarTablero(string[] palabras)
@@ -98,16 +100,16 @@ static bool PuedeColocarPalabra(char[,] tablero, string palabra, int fila, int c
 
     for (int i = 0; i < palabra.Length; i++)
     {
-        if (filaSiguiente >= tamanio columnaSiguiente >= tamanio tablero[filaSiguiente, columnaSiguiente] != '\0')
+        if (filaSiguiente >= tamanio && columnaSiguiente >= tamanio && tablero[filaSiguiente, columnaSiguiente] != '\0')
         {
-        return false;
+            return false;
+        }
+
+        filaSiguiente += filaOffset;
+        columnaSiguiente += columnaOffset;
     }
 
-    filaSiguiente += filaOffset;
-    columnaSiguiente += columnaOffset;
-}
-
-return true;
+    return true;
 }
 
 static void ColocarPalabraEnTablero(char[,] tablero, string palabra, int fila, int columna, int direccion)
